@@ -1,0 +1,33 @@
+{
+  "name": "reactprac",
+  "version": "1.0.0",
+  "description": "this is a live course",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagar2602/ReactPrac.git"
+  },
+  "keywords": [],
+  "author": "sagar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sagar2602/ReactPrac/issues"
+  },
+  "homepage": "https://github.com/sagar2602/ReactPrac#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 Chrome version",
+    "last 2 Firefox version"
+  ]
+}
