@@ -17,10 +17,15 @@ const Title2 = function () {
   )
 };
 
+// JS variable
+const num = 1000;
+
 const HeadingCmponent = () => (
   <div id="container">
     <Title />
     <Title2 />
+    <h2>{num}</h2>
+    <h3>{ 100 + 200 }</h3>
     <h1 className="head" tabIndex="5">
       JSX Namaste React Heading Compoenent!
     </h1>
