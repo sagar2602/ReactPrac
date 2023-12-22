@@ -66,7 +66,7 @@ const Body = () => {
 
       </div>
       <div className="restaurant-container">
-        <Card />
+        <Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card />
       </div>
     </div>
   )
