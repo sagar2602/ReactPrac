@@ -46,14 +46,14 @@ const styleCard = {
 }
 
 // Restaurant Card 
-const Card = () => {
+const Card = (props) => {
   return (
     <div className="res-card" style={styleCard}>
       <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ilautxtm7p3tf9cibcnc"></img>
-      <h3>Bikkgane Biryani</h3>
-      <h4>Biryani, North Indian, Asian</h4>
-      <h4>4.3*</h4>
-      <h4>38 minutes</h4>
+      <h3>{ props.resName }</h3>
+      <h4>{ props.resCuisine }</h4>
+      <h4>{ props.resRate }</h4>
+      <h4>{ props.resDel }</h4>
     </div>
   )
 }
@@ -66,7 +66,8 @@ const Body = () => {
 
       </div>
       <div className="restaurant-container">
-        <Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card />
+        <Card resName="Bikkgane Biryani" resCuisine="Biryani, North Indian, Asian" resRate="4.3*" resDel="38Min"/>
+        <Card resName="KFC" resCuisine="Burger, Italian, Fast Food" resRate="4.9*" resDel="25Min"/>
       </div>
     </div>
   )
