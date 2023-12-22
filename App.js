@@ -1,56 +1,88 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// Functional component using Arrow function.
-const Title = () => (
-  <h1 className="head" tabIndex="5">
-    JSX Namaste React Title Compoenent!
-  </h1>
-);
+/**
+ * Header
+ *  - Logo
+ *  - Nav Bar
+ * Body
+ *  - Search Bar
+ *  - Card Container
+ *    - Restaruant Cards
+ *      - Img
+ *      - Star Rating
+ *      - Cuisines
+ *      - Name of rest
+ *      - deleievery time
+ * Footer
+ *  - Copyright
+ *  - Privacy Policy
+ *  - Social Icons
+ *  - ContactUs
+ */
 
-// Functional component without using Arrow function.
-const Title2 = function () {
+// Header Component
+const Header = () => {
   return (
-    <h1 className="head" tabIndex="5">
-      JSX Namaste React Title-2 Compoenent!
-    </h1>
+    <div className="header">
+      <div className="logo-container">
+        <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png"></img>
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
   )
-};
+}
 
-// JS variable
-const num = 1000;
+// Inline CSS in JSX
+const styleCard = {
+  backgroundColor: "#f0f0f0"
+}
 
-// React Element - 1
-const ele = <span>Hi Welcome -- </span>
+// Restaurant Card 
+const Card = () => {
+  return (
+    <div className="res-card" style={styleCard}>
+      <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ilautxtm7p3tf9cibcnc"></img>
+      <h3>Bikkgane Biryani</h3>
+      <h4>Biryani, North Indian, Asian</h4>
+      <h4>4.3*</h4>
+      <h4>38 minutes</h4>
+    </div>
+  )
+}
 
-// React Element
-const rElement = (
-  <h1>
-    {ele}
-    Hi I am react element!
-  </h1>
-);
+// Body Componenet 
+const Body = () => {
+  return (
+    <div className="body-container">
+      <div className="search">
 
-const HeadingCmponent = () => (
-  <div id="container">
-    <Title />
-    {Title()}
-    <Title2 />
-    <h1>{ rElement }</h1>
-    <h2>{num}</h2>
-    <h3>{ 100 + 200 }</h3>
-    <h1 className="head" tabIndex="5">
-      JSX Namaste React Heading Compoenent!
-    </h1>
-  </div>
-);
+      </div>
+      <div className="restaurant-container">
+        <Card />
+      </div>
+    </div>
+  )
+}
 
-
+// Build App Layout Component
+const AppLayout = () => {
+  return (
+    <div className="app-wrapper">
+      <Header />
+      <Body />
+    </div>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// Whateverhappen in react it will happen under this root
-
-root.render(<HeadingCmponent />);
+root.render(<AppLayout />);
 
 
