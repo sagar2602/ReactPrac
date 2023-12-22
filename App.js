@@ -46,14 +46,14 @@ const styleCard = {
 }
 
 // Restaurant Card 
-const Card = (props) => {
+const Card = ({ resName, resCuisine, resRate, resDel }) => {
   return (
     <div className="res-card" style={styleCard}>
       <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/ilautxtm7p3tf9cibcnc"></img>
-      <h3>{ props.resName }</h3>
-      <h4>{ props.resCuisine }</h4>
-      <h4>{ props.resRate }</h4>
-      <h4>{ props.resDel }</h4>
+      <h3>{ resName }</h3>
+      <h4>{ resCuisine }</h4>
+      <h4>{ resRate }</h4>
+      <h4>{ resDel }</h4>
     </div>
   )
 }
