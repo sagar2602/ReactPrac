@@ -20,10 +20,22 @@ const Title2 = function () {
 // JS variable
 const num = 1000;
 
+// React Element - 1
+const ele = <span>Hi Welcome -- </span>
+
+// React Element
+const rElement = (
+  <h1>
+    {ele}
+    Hi I am react element!
+  </h1>
+);
+
 const HeadingCmponent = () => (
   <div id="container">
     <Title />
     <Title2 />
+    <h1>{ rElement }</h1>
     <h2>{num}</h2>
     <h3>{ 100 + 200 }</h3>
     <h1 className="head" tabIndex="5">
