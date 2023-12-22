@@ -34,6 +34,7 @@ const rElement = (
 const HeadingCmponent = () => (
   <div id="container">
     <Title />
+    {Title()}
     <Title2 />
     <h1>{ rElement }</h1>
     <h2>{num}</h2>
