@@ -5,7 +5,13 @@ import { useState } from "react";
 // Body Componenet 
 const Body = () => {
   // Local State variable - superpoerful variable
-  const [ listOfRests, setListOfRestraunt ] = useState(resObject);
+  // const [ listOfRests, setListOfRestraunt ] = useState(resObject);
+
+  const arr = useState(resObject);
+  // const [ listOfRests, setListOfRestraunt ] = arr;
+  const listOfRests = arr[ 0 ];
+  const setListOfRestraunt = arr[ 1 ];
+
   return (
     <div className="body-container">
       <div className="filter">
