@@ -15,7 +15,8 @@ const Body = () => {
 
     //Convert data to JSON
     const jsonData = await data.json();
-    setListOfRestraunt(jsonData.data.cards[ 1 ].card.card.gridElements.infoWithStyle.restaurants);
+    // Optional Chaining
+    setListOfRestraunt(jsonData?.data?.cards[ 1 ]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
   return (
