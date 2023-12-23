@@ -1,5 +1,6 @@
 import Card from "./Card";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 // Body Componenet 
 const Body = () => {
@@ -21,7 +22,7 @@ const Body = () => {
 
   // Spinning Wheel
   if (listOfRests.length === 0) {
-    return <h1>Loading...........</h1>;
+    return <Shimmer/>;
   }
 
   return (
