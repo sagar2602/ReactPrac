@@ -17,6 +17,11 @@ const Body = () => {
     const jsonData = await data.json();
     // Optional Chaining
     setListOfRestraunt(jsonData?.data?.cards[ 1 ]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  };
+
+  // Spinning Wheel
+  if (listOfRests.length === 0) {
+    return <h1>Loading...........</h1>;
   }
 
   return (
