@@ -20,7 +20,7 @@ const Body = () => {
     setListOfRestraunt(jsonData?.data?.cards[ 1 ]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
-  // Spinning Wheel
+  // Conditional Rendering
   if (listOfRests.length === 0) {
     return <Shimmer/>;
   }
