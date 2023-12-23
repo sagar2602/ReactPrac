@@ -1,11 +1,22 @@
 import Card from "./Card";
-import resObject from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Body Componenet 
 const Body = () => {
   // Local State variable - superpoerful variable
-  const [ listOfRests, setListOfRestraunt ] = useState(resObject);
+  const [ listOfRests, setListOfRestraunt ] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.608637&lng=77.359795&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+
+    //Convert data to JSON
+    const jsonData = await data.json();
+    setListOfRestraunt(jsonData.data.cards[ 1 ].card.card.gridElements.infoWithStyle.restaurants);
+  }
 
   return (
     <div className="body-container">
