@@ -14,18 +14,13 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.608637&lng=77.359795&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
-    //Convert data to JSON
+    // Convert data to JSON
     const jsonData = await data.json();
     // Optional Chaining
-    setListOfRestraunt(jsonData?.data?.cards[ 1 ]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestraunt(jsonData?.data?.cards[ 5 ]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
-  // Conditional Rendering
-  if (listOfRests.length === 0) {
-    return <Shimmer/>;
-  }
-
-  return (
+  return (listOfRests.length === 0) ? <Shimmer/> : (
     <div className="body-container">
       <div className="filter">
         <button
