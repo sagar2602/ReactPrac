@@ -6,7 +6,6 @@ import { useState } from "react";
 // Header Component
 const Header = () => {
   const [ btn, updateBtn ] = useState("Login");
-  console.log("Header component rendered");
   return (
     <div className="header">
       <div className="logo-container">
@@ -23,7 +22,9 @@ const Header = () => {
           <li>Cart</li>
           <button className="login" onClick={
             () => {
-              updateBtn("Logout");
+              btn === "Login"
+                ? updateBtn("Logout")
+                : updateBtn("Login");
             }
           }
           >{btn}</button>
