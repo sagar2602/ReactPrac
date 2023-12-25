@@ -7,6 +7,7 @@ const Body = () => {
   // Local State variable - superpoerful variable
   const [ listOfRests, setListOfRestraunt ] = useState([]);
   const [ searchText, setInput ] = useState("");
+  console.log('Body comp rendered again');
 
   useEffect(() => {
     fetchData();
