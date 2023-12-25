@@ -6,6 +6,7 @@ import { useState } from "react";
 // Header Component
 const Header = () => {
   const [ btn, updateBtn ] = useState("Login");
+  console.log("Header component rendered");
   return (
     <div className="header">
       <div className="logo-container">
