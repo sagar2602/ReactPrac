@@ -25,7 +25,9 @@ const Body = () => {
     <div className="body-container">
       <div className="filter">
       <div className="search"> 
-        <input className="search-box" type="text" value={searchText}>
+          <input className="search-box" type="text" value={searchText} onChange={(e) => {
+            setInput(e.target.value);
+        }}>
         </input>
           <button onClick={() => {
             console.log(searchText);
