@@ -7,7 +7,8 @@ const Body = () => {
   // Local State variable - superpoerful variable
   const [ listOfRests, setListOfRestraunt ] = useState([]);
   const [ searchText, setInput ] = useState("");
-  console.log('Body comp rendered again');
+
+  // Whever the state variable gets updated, react triggers a reconciliation cycle(re-renders the component)
 
   useEffect(() => {
     fetchData();
@@ -31,9 +32,13 @@ const Body = () => {
         }}>
         </input>
           <button onClick={() => {
-            console.log(searchText);
             // Filter the restaurant cards and update the UI
             // search text
+            const filteredRest = listOfRests.filter((res) => {
+              return res.info.name.includes(searchText)
+            });
+            setListOfRestraunt(filteredRest);
+
         }}>Search</button>
       </div>
         <button
