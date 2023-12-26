@@ -6,7 +6,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   // Local State variable - superpoerful variable
   const [ listOfRests, setListOfRestraunt ] = useState([]);
-  const [ defaultResList, setDefaultRestList ] = useState([]);
+  const [ filteredRestaurant, setFileteredRestraunt ] = useState([]);
   const [ searchText, setInput ] = useState("");
 
   // Whever the state variable gets updated, react triggers a reconciliation cycle(re-renders the component)
@@ -23,7 +23,7 @@ const Body = () => {
     const resList = jsonData?.data?.cards[ 5 ]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     // Optional Chaining
     setListOfRestraunt(resList);
-    setDefaultRestList(resList);
+    setFileteredRestraunt(resList);
   };
 
   return (listOfRests.length === 0) ? <Shimmer/> : (
@@ -37,10 +37,10 @@ const Body = () => {
           <button onClick={() => {
             // Filter the restaurant cards and update the UI
             // search text
-            const filteredRest = defaultResList.filter((res) => {
+            const filteredRest = listOfRests.filter((res) => {
               return res.info.name.toLowerCase().includes(searchText.toLowerCase())
             });
-            setListOfRestraunt(filteredRest);
+            setFileteredRestraunt(filteredRest);
 
         }}>Search</button>
       </div>
@@ -56,7 +56,7 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {
-          listOfRests.map(restaurant => <Card key={restaurant.info.id
+          filteredRestaurant.map(restaurant => <Card key={restaurant.info.id
           } resData={restaurant} />)
         }
       </div>
