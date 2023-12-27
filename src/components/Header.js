@@ -10,9 +10,11 @@ const Header = () => {
 
   // Case-1-If no dependency array => useEffect is called on every render.
   // Case-2-If dependency array is empty => useEffect is called only on intial render(just once).
+  // Case-3-If there is something inside dependency array => useEffect is called only when dependency changes; 
+  // Case-3-ex- If dependency array is [btn] => called everytime btn gets updated.
   useEffect(() => {
     console.log("useEffect callback");
-  }, []);
+  }, [btn]);
   return (
     <div className="header">
       <div className="logo-container">
