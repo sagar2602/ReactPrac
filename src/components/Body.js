@@ -2,6 +2,7 @@ import Card from "./Card";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 // Body Componenet 
 const Body = () => {
@@ -26,6 +27,10 @@ const Body = () => {
     setListOfRestraunt(resList);
     setFileteredRestraunt(resList);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) return <h1>Looks like you are Offline!. Please check your internet connection</h1>
 
   return (listOfRests.length === 0) ? <Shimmer/> : (
     <div className="body-container">
