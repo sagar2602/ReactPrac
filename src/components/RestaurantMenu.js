@@ -15,32 +15,23 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <Shimmer />;
   const { name, cuisines, costForTwoMessage } = resInfo?.cards[ 0 ]?.card?.card?.info;
-  
-  // const { itemCards } = resInfo?.cards[ 2 ]?.groupedCard?.cardGroupMap?.REGULAR?.cards[ 1 ]?.card?.card;
-  // console.log(itemCards);
 
   const cardsArray = resInfo?.cards[ 2 ]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-
-  // console.log(cardsArray);
-
 
   return (
     <div className="menu">
       <h1>{name}</h1>
       <p>{cuisines.join(", ")} - { costForTwoMessage }</p>
       <h2>Menu</h2>
-      {cardsArray.map((eachCard) => {
-        // console.log(eachCard.card.card[ '@type' ].includes('ItemCategory'));
-        // console.log(eachCard);
-        // console.log('============');
-        // console.log(eachCard.card.card['itemCards']);
+      {cardsArray.map((eachCard, index) => {
         if (eachCard.card.card[ '@type' ].includes('ItemCategory') && !eachCard.card.card[ '@type' ].includes('NestedItemCategory')) {
+          // Destructuring to make it easy to read.
+          const { title, itemCards } = eachCard.card.card;
           return (
-           <div className="item-category">
-              <h1>{eachCard.card.card[ 'title' ]}</h1>
-                          {/* const {itemCards} = eachCard.card.card; */}
+           <div className="item-category" key={index}>
+              <h1>{title}</h1>
             <ul>
-              {eachCard.card.card['itemCards'].map((item) => (
+              {itemCards.map((item) => (
                 <li key={item.card.info.id } className="item-details">
                   <span className="title">{item.card.info.name}</span>
                   <span className="cost">{item.card.info.price / 100}</span>
