@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,6 +7,9 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+
+// Lazy Loading for Grocery Components and sub components.
+const Grocery = lazy(() => import("./components/Grocery"));
 
 // Build App Layout Component
 const AppLayout = () => {
@@ -37,6 +40,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: <Grocery />,
       },
       {
         path: "/restaurants/:resId",
