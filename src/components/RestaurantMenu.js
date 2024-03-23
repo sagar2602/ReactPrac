@@ -36,7 +36,7 @@ const RestaurantMenu = () => {
               {itemCards.map((item) => (
                 <li key={item.card.info.id } className="item-details">
                   <span className="title">{item.card.info.name}</span>
-                  <span className="cost">{item.card.info.price / 100}</span>
+                  <span className="cost">{item.card.info.price / 100 || item.card.info.defaultPrice / 100}</span>
                   <span className="rating">{item.card.info.ratings.aggregatedRating.rating}</span>
                 </li>
               ))}
@@ -44,12 +44,30 @@ const RestaurantMenu = () => {
             </div>
           )
         }
+        else if (eachCard.card.card[ '@type' ].includes('NestedItemCategory')) {
+          const { title, categories } = eachCard.card.card;
+          return (
+            <div className="item-nested-category" key={index}>
+              <h1>{"**Nested**" + title}</h1>
+               {categories.map((eachCategory, i) => 
+                 <div className="item-nested-category" key={i}>
+                    <h2>{"**" + eachCategory['title'] + "**"}</h2>
+                    <ul>
+                     {eachCategory[ 'itemCards' ].map((iCards) =>
+                       (
+                        <li key={iCards.card.info.id } className="item-details">
+                          <span className="title">{iCards.card.info.name}</span>
+                          <span className="cost">{iCards.card.info.price / 100 || iCards.card.info.defaultPrice / 100}</span>
+                          <span className="rating">{iCards.card.info.ratings?.aggregatedRating?.rating || 0.00 }</span>
+                        </li>
+                      )) }
+                    </ul>
+                  </div>
+                )}
+            </div>
+          )
+        }
   })}
-      <ul>
-        <li>Biryani</li>
-        <li>Burgers</li>
-        <li>Diet Coke</li>
-      </ul>
     </div>
   )
 }
