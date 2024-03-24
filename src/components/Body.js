@@ -34,13 +34,13 @@ const Body = () => {
 
   return (listOfRests.length === 0) ? <Shimmer/> : (
     <div className="body-container">
-      <div className="filter">
-      <div className="search"> 
-          <input className="search-box" type="text" value={searchText} onChange={(e) => {
+      <div className="filter flex">
+      <div className="search p-4 m-4"> 
+          <input className="border border-solid border-black" type="text" value={searchText} onChange={(e) => {
             setInput(e.target.value);
         }}>
         </input>
-          <button onClick={() => {
+          <button className="px-4 py-1 bg-green-100 m-4 rounded-lg" onClick={() => {
             // Filter the restaurant cards and update the UI
             // search text
             const filteredRest = listOfRests.filter((res) => {
@@ -50,8 +50,9 @@ const Body = () => {
 
         }}>Search</button>
       </div>
-        <button
-          className="filter-btn"
+        <div className="p-4 m-4 flex items-center">
+          <button
+          className="filter-btn px-4 py-1 bg-gray-100 m-4 rounded-lg"
           onClick={() => {
             const topRatedList = listOfRests.filter(
               (res) => res.info.avgRating > 4.2
@@ -60,7 +61,8 @@ const Body = () => {
           }}
         > Top Rated </button>
       </div>
-      <div className="restaurant-container">
+      </div>
+      <div className="restaurant-container flex flex-wrap">
       {
         filteredRestaurant.map(restaurant => (<Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><Card resData={restaurant} /></Link>))
       }
