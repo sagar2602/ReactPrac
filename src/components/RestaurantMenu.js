@@ -52,10 +52,16 @@ const RestaurantMenu = () => {
                     <ul>
                      {eachCategory[ 'itemCards' ].map((iCards) =>
                        (
-                        <li key={iCards.card.info.id } className="item-details flex justify-between border border-solid border-black">
-                          <span className="title">{iCards.card.info.name}</span>
-                          <span className="cost">{iCards.card.info.price / 100 || iCards.card.info.defaultPrice / 100}</span>
-                          <span className="rating">{iCards.card.info.ratings?.aggregatedRating?.rating || 0.00 }</span>
+                       <li key={iCards.card.info.id} className="item-details flex justify-between border-b border-solid border-black">
+                         <div className="flex flex-col">
+                            <span className="title px-24 mx-24 font-bold">{iCards.card.info.name}</span>
+                            <span className="cost px-24 mx-24">{ "Rs." + (iCards.card.info.price / 100 || iCards.card.info.defaultPrice / 100)}</span>
+                            <span className="rating px-24 mx-24">{(iCards.card.info.ratings?.aggregatedRating?.rating || 0.00) + "*"}</span>
+                            <span className="description px-24 mx-24 my-4 pb-4">{iCards.card.info.description}</span>
+                         </div>
+                         <div>
+                           <img className="img p-4 mb-8 w-[200px] h-40 rounded-3xl" src={ MENU_IMG_URL + iCards.card.info.imageId}></img>
+                         </div>
                         </li>
                       )) }
                     </ul>
