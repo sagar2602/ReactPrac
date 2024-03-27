@@ -48,7 +48,7 @@ const RestaurantMenu = () => {
               return (
                 <div className="border border-solid border-black w-1/3 rounded-lg mr-2 p-4">
                   <div className="flex">
-                    <img className="rounded-lg mr-2" src={ "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/" + eachOffer.info.logoBottom }></img>
+                    <img className="rounded-lg mr-2" src={ "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_28,h_28/" + (((eachOffer.info.offerLogo === "offers/generic") || (eachOffer.info.offerLogo === "offers/save-big") || (eachOffer.info.offerLogo === "offers/deal-of-day")) ? "Store_Assets/Icons/OfferIconCart" : eachOffer.info.logoBottom) }></img>
                     <span className={"text-green-500" }>{eachOffer.info.header}</span>
                   </div>
                   <div className="flex">
