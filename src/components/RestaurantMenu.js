@@ -64,9 +64,10 @@ const RestaurantMenu = () => {
         }
       })}
       {/* categories accordion */}
-      {categories.map((cat) => (
-        <RestaurantCategory data={ cat?.card?.card } />
-      ))}
+      {categories.map((cat, index) => {
+        // console.log(cat)
+        return <RestaurantCategory key={cat?.card?.card.title} data={cat?.card?.card} />
+      })}
     </div>
   )
 }
