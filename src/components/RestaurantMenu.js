@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
   if (resInfo === null) return <Shimmer />;
   const cardsDetails = resInfo?.cards;
 
-  const cardsArray = resInfo?.cards[ 4 ]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const { itemCards } = resInfo?.cards[ 4 ]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   return (
     <div className="menu">
@@ -62,70 +62,15 @@ const RestaurantMenu = () => {
           }</div>)
         }
       })}
-      {cardsArray.map((eachCard, index) => {
-        if (eachCard.card.card[ '@type' ].includes('ItemCategory') && !eachCard.card.card[ '@type' ].includes('NestedItemCategory')) {
-          // Destructuring to make it easy to read.
-          const { title, itemCards } = eachCard.card.card;
-          return (
-           <div className="item-category" key={index}>
-              <h1 className="p-4 m-4 font-bold">{title}</h1>
-            <ul>
-              {itemCards.map((item) => (
-                <li key={item.card.info.id} className="item-details flex justify-between border-b border-solid border-black mx-[200px]">
-                  <div className="flex flex-col w-full pb-4 pt-4">
-                    <span className="title font-bold">{item.card.info.name}</span>
-                    <span className="cost">{"Rs." + (item.card.info.price / 100 || item.card.info.defaultPrice / 100)}</span>
-                    <span className="rating">{(item.card.info.ratings.aggregatedRating.rating || 0.00) + "*"}</span>
-                    <span className="description my-4">{item.card.info.description}</span>
-                  </div>
-                  <div>
-                    <img className="img p-4 mb-8 w-[200px] h-40 rounded-3xl" src={ MENU_IMG_URL + item.card.info.imageId}></img>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            </div>
-          )
-        }
-        else if (eachCard.card.card[ '@type' ].includes('NestedItemCategory')) {
-          const { title, categories } = eachCard.card.card;
-          return (
-            <div className="item-nested-category" key={index}>
-              <h1 className="mx-[200px] font-bold">{title + "?"}</h1>
-               {categories.map((eachCategory, i) => 
-                 <div className="item-nested-category" key={i}>
-                   <div className="inline-block mx-[200px]">
-                     <h2 className="font-semibold">
-                       {eachCategory[ 'title' ] + " >"}
-                       <span className="border-b border-solid border-black inline-block w-[10px]"></span>
-                     </h2>
-                   </div>
-                   {/* <h2 className="inline-block mx-[200px] font-semibold border-b border-solid border-black pb-4">{eachCategory[ 'title' ] + " >"}</h2> */}
-                   {/* <div className="inline-block mx-[200px]">
-                     <h2 className="font-semibold">{"hjhjhjhjh"}<span className="border-b border-solid border-black inline-block w-[10px]"></span> &gt;</h2>
-                   </div> */}
-                    <ul>
-                     {eachCategory[ 'itemCards' ].map((iCards) =>
-                       (
-                       <li key={iCards.card.info.id} className="item-details flex justify-between border-b border-solid border-black mx-[200px]">
-                         <div className="flex flex-col w-full pb-4 pt-4">
-                            <span className="title font-bold">{iCards.card.info.name}</span>
-                            <span className="cost">{ "Rs." + (iCards.card.info.price / 100 || iCards.card.info.defaultPrice / 100)}</span>
-                            <span className="rating">{(iCards.card.info.ratings?.aggregatedRating?.rating || 0.00) + "*"}</span>
-                            <span className="description my-4">{iCards.card.info.description}</span>
-                         </div>
-                         <div>
-                           <img className="img p-4 mb-8 w-[200px] h-40 rounded-3xl" src={ MENU_IMG_URL + iCards.card.info.imageId}></img>
-                         </div>
-                        </li>
-                      )) }
-                    </ul>
-                  </div>
-                )}
-            </div>
-          )
-        }
-  })}
+      <ul>
+      {
+        itemCards.map((item) => (
+          <li key={item.card.info.id}>
+            {item.card.info.name + " - Rs." + (item.card.info.price / 100 || 0.00)}
+          </li>
+        ))
+      }
+      </ul>
     </div>
   )
 }
