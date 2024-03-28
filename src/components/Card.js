@@ -26,7 +26,7 @@ export const withVegLabel = (Card) => {
   return (props) => {
     return (
       <div>
-        <label>Veg✅</label>
+        <label className="absolute bg-stone-800 text-white mx-4 p-2 rounded-lg">Veg✅</label>
         <Card {...props} />
       </div>
     )
