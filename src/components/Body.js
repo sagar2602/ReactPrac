@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card, { withVegLabel } from "./Card";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ const Body = () => {
   const [ listOfRests, setListOfRestraunt ] = useState([]);
   const [ filteredRestaurant, setFileteredRestraunt ] = useState([]);
   const [ searchText, setInput ] = useState("");
+
+  const CardVegeterian = withVegLabel(Card);
 
   // Whever the state variable gets updated, react triggers a reconciliation cycle(re-renders the component)
 
@@ -64,7 +66,10 @@ const Body = () => {
       </div>
       <div className="restaurant-container flex flex-wrap">
       {
-        filteredRestaurant.map(restaurant => (<Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}><Card resData={restaurant} /></Link>))
+          filteredRestaurant.map(restaurant => (<Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+            {/** If the restaurant is only veg then add a veg label to it. */}
+            {restaurant?.info?.veg ? <CardVegeterian resData={restaurant} /> : <Card resData={restaurant} />}
+          </Link>))
       }
       </div>
     </div>

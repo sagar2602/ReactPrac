@@ -19,4 +19,18 @@ const Card = (props) => {
   )
 }
 
+// Higher Order Components.
+// input will be Card and output from Higher order component(withVegLabel) is VegCard
+
+export const withVegLabel = (Card) => {
+  return (props) => {
+    return (
+      <div>
+        <label>Veg✅</label>
+        <Card {...props} />
+      </div>
+    )
+  }
+}
+
 export default Card;
